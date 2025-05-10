@@ -1,6 +1,8 @@
 const { app, BrowserWindow, screen, ipcMain } = require('electron');
 const path = require('path');
-require('@electron/remote/main').initialize();
+const remote = require('@electron/remote/main');
+
+remote.initialize();
 
 let mainWindow;
 
@@ -34,7 +36,7 @@ function createWindow() {
         }
     });
 
-    require('@electron/remote/main').enable(mainWindow.webContents);
+    remote.enable(mainWindow.webContents);
 
     // Lae HTML fail
     mainWindow.loadFile('templates/index.html');

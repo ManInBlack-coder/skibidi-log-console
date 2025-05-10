@@ -21,7 +21,7 @@ class BugTracker {
     }
 
     initWebSocket() {
-        this.ws = new WebSocket('ws://localhost:9091/ws');
+        this.ws = new WebSocket('ws://localhost:9092/ws');
         
         this.ws.onmessage = (event) => {
             const log = JSON.parse(event.data);
@@ -35,35 +35,24 @@ class BugTracker {
     }
 
     initDraggable() {
-        const { getCurrentWindow } = require('@electron/remote');
-        const win = getCurrentWindow();
         const header = this.window.querySelector('.bug-tracker-header');
-
         let isMouseDown = false;
-        let startX, startY, windowStartX, windowStartY;
+        let startX, startY;
+        let windowStartX, windowStartY;
 
         header.addEventListener('mousedown', (e) => {
             if (e.target.classList.contains('window-control')) return;
             
             isMouseDown = true;
-            startX = e.screenX;
-            startY = e.screenY;
-            
-            const bounds = win.getBounds();
-            windowStartX = bounds.x;
-            windowStartY = bounds.y;
+            startX = e.clientX - this.window.offsetLeft;
+            startY = e.clientY - this.window.offsetTop;
         });
 
         document.addEventListener('mousemove', (e) => {
             if (!isMouseDown) return;
             
-            const deltaX = e.screenX - startX;
-            const deltaY = e.screenY - startY;
-            
-            win.setBounds({
-                x: windowStartX + deltaX,
-                y: windowStartY + deltaY
-            });
+            this.window.style.left = (e.clientX - startX) + 'px';
+            this.window.style.top = (e.clientY - startY) + 'px';
         });
 
         document.addEventListener('mouseup', () => {

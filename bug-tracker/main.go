@@ -18,7 +18,7 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-const PORT = "9091"
+const PORT = "9092"
 
 // LogEntry struktuur defineerib logi kirje formaadi
 // See peab ühtima kliendipoolse logger.ts formaadiga
@@ -100,9 +100,8 @@ func main() {
 	r := gin.Default()
 
 	// Lisa CORS (Cross-Origin Resource Sharing) seadistus
-	// See võimaldab päringuid localhost:5173 kliendilt
 	r.Use(func(c *gin.Context) {
-		c.Writer.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
 		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
 		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 
@@ -133,7 +132,7 @@ func main() {
 
 	// Loo pid fail
 	pid := os.Getpid()
-	if err := os.WriteFile("server.pid", []byte(fmt.Sprintf("%d", pid)), 0644); err != nil {
+	if err := os.WriteFile("server.pid", fmt.Appendf(nil, "%d", pid), 0644); err != nil {
 		log.Printf("Hoiatus: ei õnnestunud luua pid faili: %v", err)
 	}
 

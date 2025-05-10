@@ -2,7 +2,7 @@
   "name": "bug-tracker",
   "version": "1.0.0",
   "description": "Desktop Bug Tracker",
-  "main": "main.js",
+  "main": "main.cjs",
   "scripts": {
     "start": "electron .",
     "dev": "concurrently \"nodemon --watch '../**/*' --watch './**/*' --ext go,ts,js,html,css --exec './start-server.sh'\" \"electron .\"",
