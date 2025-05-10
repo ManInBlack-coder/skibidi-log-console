@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Tracker</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        
+        body {
+            margin: 0;
+            background: transparent;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 6px;
+            margin-left: 12px;
+        }
+
+        .window-control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            opacity: 0.8;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .window-control:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .close-btn {
+            background: #ff5f57;
+        }
+
+        .minimize-btn {
+            background: #febc2e;
+        }
+
+        .restart-btn {
+            background: #28c840;
+        }
+
+        /* Animatsioonid */
+        .log-entry {
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Tooltip stiilid */
+        .window-control {
+            position: relative;
+        }
+
+        .window-control::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 4px 8px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 11px;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .window-control:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const { ipcRenderer } = require('electron');
+        
+        // Lisa akna juhtnupud kui DOM on laetud
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('.bug-tracker-header');
+            const controls = document.createElement('div');
+            controls.className = 'window-controls';
+            
+            const minimizeBtn = document.createElement('div');
+            minimizeBtn.className = 'window-control minimize-btn';
+            minimizeBtn.setAttribute('data-tooltip', 'Minimeeri');
+            minimizeBtn.onclick = () => ipcRenderer.send('minimize-app');
+            
+            const restartBtn = document.createElement('div');
+            restartBtn.className = 'window-control restart-btn';
+            restartBtn.setAttribute('data-tooltip', 'Taaskäivita');
+            restartBtn.onclick = () => ipcRenderer.send('restart-frontend');
+            
+            const closeBtn = document.createElement('div');
+            closeBtn.className = 'window-control close-btn';
+            closeBtn.setAttribute('data-tooltip', 'Sulge');
+            closeBtn.onclick = () => ipcRenderer.send('close-app');
+            
+            controls.appendChild(minimizeBtn);
+            controls.appendChild(restartBtn);
+            controls.appendChild(closeBtn);
+            header.appendChild(controls);
+        });
+    </script>
+    <script src="../static/app.js"></script>
+</body>
+</html> 

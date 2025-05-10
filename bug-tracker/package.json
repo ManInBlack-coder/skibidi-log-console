@@ -1,0 +1,17 @@
+{
+  "name": "bug-tracker",
+  "version": "1.0.0",
+  "description": "Desktop Bug Tracker",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently \"nodemon --watch '../**/*' --watch './**/*' --ext go,ts,js,html,css --exec './start-server.sh'\" \"electron .\"",
+    "dev:server": "nodemon --watch '../**/*' --watch './**/*' --ext go,ts,js,html,css --exec './start-server.sh'"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.1.2",
+    "concurrently": "^8.2.2",
+    "electron": "^28.1.0",
+    "nodemon": "^3.1.10"
+  }
+}

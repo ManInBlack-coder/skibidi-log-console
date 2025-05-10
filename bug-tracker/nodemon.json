@@ -1,0 +1,15 @@
+{
+  "watch": [
+    "../client/src/**/*",
+    "../backend/**/*",
+    "./**/*"
+  ],
+  "ext": "go,ts,js,html,css",
+  "ignore": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.git/**"
+  ],
+  "verbose": true
+} 
