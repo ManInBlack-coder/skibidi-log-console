@@ -137,7 +137,13 @@ yarn dev
 
 ![import](screenshots/import.png)
 
+2. Then use it where ever you want in code 
 
+![import2](screenshots/screen2.png)
+
+3. and see output in skibidi log
+
+![outputimage](screenshot/outputimage)
 
 
 
