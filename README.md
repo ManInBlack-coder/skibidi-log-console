@@ -1,8 +1,6 @@
 # Skibidi Log Console
 
-An elegant and lightweight logging tool for JavaScript projects that allows you to view and monitor logs directly in your application without using the console.
-
-![Skibidi Log Console](screenshots/preview.png)
+An elegant and lightweight logging tool for react projects that allows you to view and monitor logs directly in your application without using the console.
 
 ## Demo
 
