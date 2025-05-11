@@ -116,96 +116,37 @@ Default dimensions:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/skibidi-log-console.git
+git clone https://github.com/ManInBlack-coder/skibidi-log-console.git
 ```
 
 2. Install dependencies:
 ```bash
 cd skibidi-log-console
-npm install
+yarn
 ```
 
 3. Start the development server:
 ```bash
-npm run dev
+yarn dev
 ```
 
-## Technical Requirements
-
-- Node.js >= 14
-- Electron (for desktop version)
-- Modern browser (Chrome, Firefox, Safari, Edge)
 
 ## Integration Examples
 
-### React Integration
+1. add logger file import 
 
-```javascript
-import { skibidi } from 'skibidi-log-console';
+![import](screenshots/import.png)
 
-function App() {
-    useEffect(() => {
-        skibidi.info('React app initialized');
-        return () => skibidi.info('React app unmounting');
-    }, []);
 
-    const handleClick = () => {
-        try {
-            // Your code here
-            skibidi.log('Button clicked');
-        } catch (error) {
-            skibidi.error('Error in click handler:', error);
-        }
-    };
 
-    return <button onClick={handleClick}>Click me</button>;
-}
-```
 
-### Vue.js Integration
 
-```javascript
-import { skibidi } from 'skibidi-log-console';
-
-export default {
-    mounted() {
-        skibidi.info('Vue component mounted');
-    },
-    methods: {
-        handleAction() {
-            skibidi.log('Action performed');
-        }
-    }
-};
-```
-
-### Express.js Middleware
-
-```javascript
-const { skibidi } = require('skibidi-log-console');
-
-app.use((req, res, next) => {
-    skibidi.info('Request:', {
-        method: req.method,
-        path: req.path,
-        ip: req.ip
-    });
-    next();
-});
-```
 
 ## Known Issues
 
 - Transparency issues might occur in Electron version on macOS Catalina and newer
 - Some browsers don't support the backdrop-filter effect
 - Window dragging might be inconsistent in certain browser versions
-
-## Performance Considerations
-
-- Log entries are buffered and batched for better performance
-- Automatic log rotation when exceeding 1000 entries
-- Minimal impact on application performance
-- Memory usage is optimized for long-running applications
 
 ## License
 
@@ -214,7 +155,7 @@ MIT
 ## Authors
 
 - Aleksander Potashenkov
-- [Your GitHub](https://github.com/ManInBlack-coder)
+- [ManInBlack-coder](https://github.com/ManInBlack-coder)
 
 ## Contributing
 
@@ -224,13 +165,3 @@ MIT
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## Roadmap
-
-- [ ] Add search functionality
-- [ ] Add log filtering by level
-- [ ] Add log export functionality
-- [ ] Add custom themes support
-- [ ] Add network request logging
-- [ ] Add performance monitoring
-- [ ] Add log persistence
-- [ ] Add remote logging support
