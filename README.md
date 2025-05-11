@@ -4,6 +4,14 @@ An elegant and lightweight logging tool for JavaScript projects that allows you 
 
 ![Skibidi Log Console](screenshots/preview.png)
 
+## Demo
+
+Here's how the logger looks in action with a Vite + React application:
+
+![Skibidi Log Console Demo with Vite and React](screenshots/vite-react-demo.png)
+
+The logger window is fully draggable, resizable, and always stays on top of other windows, making it perfect for debugging and monitoring your application in real-time.
+
 ## Features
 
 - 🪟 Draggable and resizable window
@@ -205,8 +213,8 @@ MIT
 
 ## Authors
 
-- Sass Sass
-- [Your GitHub](https://github.com/your-username)
+- Aleksander Potashenkov
+- [Your GitHub](https://github.com/ManInBlack-coder)
 
 ## Contributing
 
@@ -215,10 +223,6 @@ MIT
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-## Support
-
-For issues and questions, please open an [Issue](https://github.com/your-username/skibidi-log-console/issues)
 
 ## Roadmap
 
