@@ -143,7 +143,7 @@ yarn dev
 
 3. and see output in skibidi log
 
-![outputimage](screenshot/outputimage)
+![outputimage](screenshot/outputimage.png)
 
 
 
