@@ -8,9 +8,9 @@ An elegant and lightweight logging tool for JavaScript projects that allows you 
 
 Here's how the logger looks in action with a Vite + React application:
 
-![Skibidi Log Console Demo with Vite and React](screenshots/vite-react-demo.png)
+![Vite + React with Skibidi Log Console](screenshots/demo.png)
 
-The logger window is fully draggable, resizable, and always stays on top of other windows, making it perfect for debugging and monitoring your application in real-time.
+The logger window appears in the top right corner, showing real-time logs from your application. In this example, you can see it working with a Vite + React application, displaying test console logs with precise timestamps and source locations.
 
 ## Features
 
