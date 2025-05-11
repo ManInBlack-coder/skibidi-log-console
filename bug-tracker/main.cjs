@@ -19,9 +19,9 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         width: DEFAULT_WIDTH,
         height: DEFAULT_HEIGHT,
-        x: width - (DEFAULT_WIDTH + 20), // Paiguta paremale servale
-        y: height - (DEFAULT_HEIGHT + 20), // Paiguta alla servale
-        frame: false, // Eemalda tavaline akna raam
+        x: width - (DEFAULT_WIDTH + 20),
+        y: height - (DEFAULT_HEIGHT + 20),
+        frame: false,
         transparent: true,
         alwaysOnTop: true,
         resizable: true,
@@ -29,6 +29,7 @@ function createWindow() {
         vibrancy: 'dark',
         visualEffectState: 'active',
         backgroundColor: '#00000000',
+        movable: true,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
@@ -58,44 +59,8 @@ function createWindow() {
         mainWindow.reload();
     });
 
-    // Seadista miinimum ja maksimum suurused
+    // Seadista miinimum suurus
     mainWindow.setMinimumSize(300, 200);
-
-    // Jälgi akna suuruse muutumist
-    mainWindow.on('will-resize', (event, newBounds) => {
-        const workAreaSize = screen.getPrimaryDisplay().workAreaSize;
-        const maxWidth = workAreaSize.width - 40;
-        const maxHeight = workAreaSize.height - 40;
-
-        // Kontrolli, et aken ei läheks ekraani piiridest välja
-        if (newBounds.width > maxWidth) {
-            event.preventDefault();
-            mainWindow.setSize(maxWidth, newBounds.height);
-        }
-        if (newBounds.height > maxHeight) {
-            event.preventDefault();
-            mainWindow.setSize(newBounds.width, maxHeight);
-        }
-
-        // Kontrolli, et aken ei läheks vasakule poole
-        if (newBounds.x < 0) {
-            event.preventDefault();
-            mainWindow.setPosition(0, newBounds.y);
-        }
-    });
-
-    // Jälgi akna liigutamist
-    mainWindow.on('will-move', (event, newBounds) => {
-        const workAreaSize = screen.getPrimaryDisplay().workAreaSize;
-        
-        // Kontrolli, et aken ei läheks ekraani piiridest välja
-        if (newBounds.x < 0 || 
-            newBounds.y < 0 || 
-            newBounds.x + newBounds.width > workAreaSize.width || 
-            newBounds.y + newBounds.height > workAreaSize.height) {
-            event.preventDefault();
-        }
-    });
 }
 
 // Kui Electron on valmis, loo aken
